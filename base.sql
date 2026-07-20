@@ -118,3 +118,63 @@ VALUES
 INSERT INTO client(numero, nom, solde, id_operateur)
 VALUES
 ('0325555555','Mika Andria',70000,2);
+
+INSERT INTO operation
+(id_type, id_client_source, id_client_destination, montant, frais)
+VALUES
+(1, 1, NULL, 20000, 0);
+
+INSERT INTO operation
+(id_type, id_client_source, id_client_destination, montant, frais)
+VALUES
+(1, 2, NULL, 50000, 0);
+
+INSERT INTO operation
+(id_type, id_client_source, id_client_destination, montant, frais)
+VALUES
+(1, 3, NULL, 15000, 0);
+
+INSERT INTO operation
+(id_type, id_client_source, montant, frais)
+VALUES
+(2, 1, 5000, 100);
+INSERT INTO operation
+(id_type, id_client_source, montant, frais)
+VALUES
+(2, 2, 10000, 300);
+INSERT INTO operation
+(id_type, id_client_source, id_client_destination, montant, frais)
+VALUES
+(3, 1, 2, 8000, 200);
+INSERT INTO operation
+(id_type, id_client_source, id_client_destination, montant, frais)
+VALUES
+(3, 2, 3, 12000, 200);
+INSERT INTO operation
+(id_type, id_client_source, id_client_destination, montant, frais)
+VALUES
+(3, 3, 1, 5000, 50);
+
+INSERT INTO gain_operateur
+(id_operation, montant_frais)
+VALUES
+(4,100);
+
+INSERT INTO gain_operateur
+(id_operation, montant_frais)
+VALUES
+(5,300);
+
+INSERT INTO gain_operateur
+(id_operation, montant_frais)
+VALUES
+(6,200);
+
+INSERT INTO gain_operateur
+(id_operation, montant_frais)
+VALUES
+(7,200);
+INSERT INTO gain_operateur
+(id_operation, montant_frais)
+VALUES
+(8,50);

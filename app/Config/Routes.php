@@ -7,6 +7,8 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
+$routes->get('operateur/dashboard','Operateur\Operateur::dashboard');
+
 $routes->get('/clients','ClientController::index');
 
 $routes->get('/client/(:num)','ClientController::detail/$1');
