@@ -106,3 +106,15 @@ INSERT INTO bareme_frais (id_type, montant_min, montant_max, frais) VALUES (3, 0
 INSERT INTO bareme_frais (id_type, montant_min, montant_max, frais) VALUES (3, 5001, 20000, 200);
 INSERT INTO bareme_frais (id_type, montant_min, montant_max, frais) VALUES (3, 20001, 100000, 500);
 
+
+INSERT INTO client(numero, nom, solde, id_operateur)
+VALUES
+('0341234567','Jean Rakoto',50000,1);
+
+INSERT INTO client(numero, nom, solde, id_operateur)
+VALUES
+('0389876543','Sarah Rasoanaivo',30000,1);
+
+INSERT INTO client(numero, nom, solde, id_operateur)
+VALUES
+('0325555555','Mika Andria',70000,2);
