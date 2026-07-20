@@ -101,7 +101,7 @@ INSERT INTO bareme_frais (id_type, montant_min, montant_max, frais) VALUES (2, 0
 INSERT INTO bareme_frais (id_type, montant_min, montant_max, frais) VALUES (2, 5001, 20000, 300);
 INSERT INTO bareme_frais (id_type, montant_min, montant_max, frais) VALUES (2, 20001, 100000, 800);
 
--- bareme
+-- bareme exemple
 INSERT INTO bareme_frais (id_type, montant_min, montant_max, frais) VALUES (3, 0, 5000, 50);
 INSERT INTO bareme_frais (id_type, montant_min, montant_max, frais) VALUES (3, 5001, 20000, 200);
 INSERT INTO bareme_frais (id_type, montant_min, montant_max, frais) VALUES (3, 20001, 100000, 500);
