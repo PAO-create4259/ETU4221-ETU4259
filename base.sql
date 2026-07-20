@@ -95,6 +95,7 @@ INSERT INTO type_operation (nom) VALUES ('Depot');
 INSERT INTO type_operation (nom) VALUES ('Retrait');
 INSERT INTO type_operation (nom) VALUES ('Transfert');
 
+
 -- bareme frais
 INSERT INTO bareme_frais (id_type, montant_min, montant_max, frais) VALUES (2, 0, 5000, 100);
 INSERT INTO bareme_frais (id_type, montant_min, montant_max, frais) VALUES (2, 5001, 20000, 300);
