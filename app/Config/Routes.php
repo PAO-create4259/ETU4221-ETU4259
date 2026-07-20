@@ -71,3 +71,9 @@ $routes->get(
     'Client\AuthController::logout'
 );
 
+//V2
+$routes->get('/operateur/configuration-prefixe','Operateur\ConfigurationPrefixeController::index');
+
+$routes->get('operateur/commission', 'Operateur\CommissionController::index');
+
+$routes->post('operateur/commission/update/(:num)', 'Operateur\CommissionController::update/$1');

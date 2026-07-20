@@ -4,18 +4,7 @@
     -Definir les differentes tables de la base de donne
     -Concevoir les tables de la bases de donne
     -Ecrire le fichier base.sql
-    -Adapter le Database.php en sqlite
-    -importer la base dans sqlite
-
-    ===Tache1====== Situation des comptes clients =================
-    -Etape1:afficher la liste des comptes clients
-    -routes.php: ajouter une route :/clients pour rediriger vers un controlleur :ClientController.php
-    -ClientController.php:
-        -function afficher la liste:index()
-        -function afficher details d' un compte:detail()
-    -Creation d' un model client:ClientModel.php
-
-
+    -Adapter le Database.php en sqllite
 #4221
     -comprehension du sujet
     -Definir les tables de la base de donnees

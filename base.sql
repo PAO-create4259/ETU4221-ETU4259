@@ -119,62 +119,72 @@ INSERT INTO client(numero, nom, solde, id_operateur)
 VALUES
 ('0325555555','Mika Andria',70000,2);
 
-INSERT INTO operation
-(id_type, id_client_source, id_client_destination, montant, frais)
-VALUES
-(1, 1, NULL, 20000, 0);
 
-INSERT INTO operation
-(id_type, id_client_source, id_client_destination, montant, frais)
-VALUES
-(1, 2, NULL, 50000, 0);
+/*TABLES VAOVAO*/
+CREATE TABLE commission_inter_operateur (
+    id_commission INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_operateur_source INTEGER NOT NULL,
+    id_operateur_destination INTEGER NOT NULL,
+    pourcentage REAL NOT NULL,
+    FOREIGN KEY(id_operateur_source)
+        REFERENCES operateur(id_operateur),
+    FOREIGN KEY(id_operateur_destination)
+        REFERENCES operateur(id_operateur)
+);
 
-INSERT INTO operation
-(id_type, id_client_source, id_client_destination, montant, frais)
+INSERT INTO commission_inter_operateur
+(id_operateur_source,id_operateur_destination,pourcentage)
 VALUES
-(1, 3, NULL, 15000, 0);
+(1,2,3);
 
-INSERT INTO operation
-(id_type, id_client_source, montant, frais)
+INSERT INTO commission_inter_operateur
+(id_operateur_source,id_operateur_destination,pourcentage)
 VALUES
-(2, 1, 5000, 100);
-INSERT INTO operation
-(id_type, id_client_source, montant, frais)
-VALUES
-(2, 2, 10000, 300);
-INSERT INTO operation
-(id_type, id_client_source, id_client_destination, montant, frais)
-VALUES
-(3, 1, 2, 8000, 200);
-INSERT INTO operation
-(id_type, id_client_source, id_client_destination, montant, frais)
-VALUES
-(3, 2, 3, 12000, 200);
-INSERT INTO operation
-(id_type, id_client_source, id_client_destination, montant, frais)
-VALUES
-(3, 3, 1, 5000, 50);
+(2,1,2);
 
-INSERT INTO gain_operateur
-(id_operation, montant_frais)
-VALUES
-(4,100);
 
-INSERT INTO gain_operateur
-(id_operation, montant_frais)
-VALUES
-(5,300);
+CREATE TABLE situation_operateur (
+    id_situation INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_operateur_source INTEGER,
+    id_operateur_destination INTEGER,
+    montant REAL,
+    date_situation DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(id_operateur_source)
+        REFERENCES operateur(id_operateur),
+    FOREIGN KEY(id_operateur_destination)
+        REFERENCES operateur(id_operateur)
 
-INSERT INTO gain_operateur
-(id_operation, montant_frais)
-VALUES
-(6,200);
+);
 
-INSERT INTO gain_operateur
-(id_operation, montant_frais)
+ALTER TABLE operation
+ADD COLUMN commission_inter REAL DEFAULT 0;
+
+ALTER TABLE operation
+ADD COLUMN inter_operateur INTEGER DEFAULT 0;
+
+-- =========================
+-- Commission entre opérateurs
+-- =========================
+
+CREATE TABLE commission_interoperateur(
+    id_commission INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_operateur_source INTEGER NOT NULL,
+    id_operateur_destination INTEGER NOT NULL,
+    pourcentage REAL NOT NULL,
+
+    FOREIGN KEY(id_operateur_source)
+        REFERENCES operateur(id_operateur),
+
+    FOREIGN KEY(id_operateur_destination)
+        REFERENCES operateur(id_operateur)
+);
+
+INSERT INTO commission_interoperateur
+(id_operateur_source,id_operateur_destination,pourcentage)
 VALUES
-(7,200);
-INSERT INTO gain_operateur
-(id_operation, montant_frais)
+(1,2,2);
+
+INSERT INTO commission_interoperateur
+(id_operateur_source,id_operateur_destination,pourcentage)
 VALUES
-(8,50);
+(2,1,2);
