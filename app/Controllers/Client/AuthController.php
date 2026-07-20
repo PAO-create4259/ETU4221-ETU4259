@@ -39,10 +39,54 @@ class AuthController extends BaseController
              return view('Client/dashboard',['client'=>$client]);
 
         }
+        // création automatique
 
-        return redirect()->back()->with( 'erreur', 'Numéro de téléphone inconnu');
 
-    }
+    $nouveauClient = [
+
+        'numero'=>$numero,
+
+        'nom'=>'Nouveau client',
+
+        'solde'=>0
+
+    ];
+
+
+
+    $model->insert($nouveauClient);
+
+
+
+    // Récupérer le client créé
+
+    $id = $model->getInsertID();
+
+
+
+    $client = $model->find($id);
+
+
+
+    // Création de session
+
+    session()->set([
+
+        'id_client'=>$client['id_client'],
+
+        'nom'=>$client['nom'],
+
+        'numero'=>$client['numero'],
+
+        'connecte'=>true
+
+    ]);
+
+
+
+    return redirect()
+    ->to('/client/dashboard');
+ }
 
      public function logout()
     {

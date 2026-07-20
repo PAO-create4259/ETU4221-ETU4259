@@ -482,3 +482,114 @@ body{
 .mm-action-card h5{
   font-weight:600;
 }
+
+/* ---------- Historique des transactions ---------- */
+.mm-tx-item{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:16px 4px;
+  border-bottom:1px solid #f3f4f6;
+}
+.mm-tx-item:last-child{ border-bottom:none; }
+.mm-tx-icon{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:1.05rem;
+  flex-shrink:0;
+}
+.mm-tx-item.is-credit .mm-tx-icon{ background:var(--mm-accent); }
+.mm-tx-item.is-debit .mm-tx-icon{ background:var(--mm-danger); }
+ 
+.mm-tx-title{ font-weight:600; color:#1f2937; font-size:.92rem; }
+.mm-tx-date{ font-size:.78rem; color:#9aa1ab; margin-top:2px; }
+.mm-tx-amount{
+  margin-left:auto;
+  font-weight:700;
+  font-size:1rem;
+  white-space:nowrap;
+}
+.mm-tx-amount.is-credit{ color:var(--mm-accent); }
+.mm-tx-amount.is-debit{ color:var(--mm-danger); }
+ 
+/* ---------- Ecran de choix de profil (Opérateur / Client) ---------- */
+.mm-choice-card{
+  background:#fff;
+  border-radius:24px;
+  padding:44px 36px;
+  max-width:440px;
+  width:100%;
+  box-shadow:0 20px 50px rgba(0,0,0,0.25);
+  text-align:center;
+}
+.mm-choice-card .mm-login-logo{
+  margin-bottom:20px;
+}
+.mm-choice-card h1{
+  font-size:1.4rem;
+  font-weight:700;
+  margin-bottom:6px;
+  color:#1f2937;
+}
+.mm-choice-card p.mm-login-sub{
+  color:#9aa1ab;
+  font-size:.9rem;
+  margin-bottom:30px;
+}
+ 
+.choice-container{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+ 
+.mm-choice-btn{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:16px 20px;
+  border-radius:16px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:.98rem;
+  transition:.2s;
+  border:1px solid #eef0f3;
+  text-align:left;
+}
+.mm-choice-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+.mm-choice-icon{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:1.2rem;
+  flex-shrink:0;
+}
+.mm-choice-btn .mm-choice-arrow{
+  margin-left:auto;
+  color:#c2c7ce;
+  font-size:1.1rem;
+}
+ 
+.mm-choice-btn.btn-operateur{
+  background:#f4f6f9;
+  color:var(--mm-secondary);
+}
+.mm-choice-btn.btn-operateur .mm-choice-icon{ background:var(--mm-secondary); }
+ 
+.mm-choice-btn.btn-client{
+  background:#fff3ea;
+  color:var(--mm-primary-dark);
+}
+.mm-choice-btn.btn-client .mm-choice-icon{ background:var(--mm-primary); }

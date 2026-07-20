@@ -28,7 +28,9 @@ Mobile Money
 
 <div class="subtitle">
 Bienvenue <?= esc($client['nom']) ?>
+<h3><?= esc($client['numero']) ?></h3>
 </div>
+
 
 </div>
 

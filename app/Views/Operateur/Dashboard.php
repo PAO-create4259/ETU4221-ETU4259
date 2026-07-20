@@ -18,6 +18,7 @@
 <body>
 
 <div class="mm-topbar">
+  
   <div>
     <h1><i class="bi bi-speedometer2"></i> Dashboard Mobile Money</h1>
     <div class="subtitle">Vue d'ensemble des gains de l'opérateur</div>
@@ -27,6 +28,13 @@
     <a href="/clients"><i class="bi bi-people-fill"></i> Clients</a>
   </nav>
 </div>
+<nav class="mm-nav">
+<a href="<?= base_url('/') ?>" class="mm-choice-btn btn-operateur">
+  <i class="bi bi-speedometer2"></i></div>
+  <div>Retour</div>
+  <i class="bi bi-chevron-right mm-choice-arrow"></i>
+</a>
+  </nav>
 
 <div class="container-fluid px-4 pb-5">
 

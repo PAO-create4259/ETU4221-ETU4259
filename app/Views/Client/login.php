@@ -70,9 +70,19 @@ Se connecter
 
 </button>
 
+
+
 </form>
+<a href="<?= base_url('/') ?>" class="mm-choice-btn btn-operateur">
+  <i class="bi bi-speedometer2"></i></div>
+  <div>Retour</div>
+  <i class="bi bi-chevron-right mm-choice-arrow"></i>
+</a>
+
+
 
 </div>
+
 
 </body>
 
