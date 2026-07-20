@@ -2,14 +2,11 @@
 
 namespace App\Controllers\Client;
 
-
 use App\Controllers\BaseController;
-use App\Models\ClientModel;
+use App\Models\Client\ClientModel;
 use App\Models\OperationModel;
 use App\Models\BaremeFraisModel;
 use App\Models\GainOperateurModel;
-
-
 
 class OperationController extends BaseController
 {
@@ -18,232 +15,94 @@ class OperationController extends BaseController
 private function idClient()
 {
 
-return session()
-->get('id_client');
+    return session()->get('id_client');
 
 }
 
-
-
-// =================
 // DEPOT
-// =================
-
 
 public function depot()
 {
 
-return view(
-'client/depot'
-);
+    return view('Client/depot');
 
 }
-
-
 
 public function effectuerDepot()
 {
 
-$id=$this->idClient();
+    $id=$this->idClient();
 
+    $montant= $this->request->getPost('montant');
 
-$montant=
-$this->request
-->getPost('montant');
+    $clientModel= new ClientModel();
 
+    $operation= new OperationModel();
 
-$clientModel=
-new ClientModel();
+    $client= $clientModel->find($id);
 
+    $clientModel->update($id, ['solde'=> $client['solde']+$montant]);
 
-$operation=
-new OperationModel();
+    $operation->insert([ 'id_type'=>1, 'id_client_source'=>$id, 'montant'=>$montant, 'frais'=>0]);
 
-
-
-$client=
-$clientModel->find($id);
-
-
-
-$clientModel->update(
-
-$id,
-
-[
-'solde'=>
-$client['solde']+$montant
-]
-
-);
-
-
-
-$operation->insert([
-
-'id_type'=>1,
-
-'id_client_source'=>$id,
-
-'montant'=>$montant,
-
-'frais'=>0
-
-]);
-
-
-
-return redirect()
-    ->to('/client/dashboard');
+    return redirect()->to('/client/dashboard');
 
 }
 
-
-
-// =================
 // RETRAIT
-// =================
-
 
 public function retrait()
 {
 
-return view(
-'client/retrait'
-);
+    return view('Client/retrait');
 
 }
-
-
 
 public function effectuerRetrait()
 {
+    $id=$this->idClient();
 
+    $montant= $this->request->getPost('montant');
 
-$id=$this->idClient();
+    $clientModel= new ClientModel();
 
+    $operation= new OperationModel();
 
-$montant=
-$this->request
-->getPost('montant');
+    $bareme= new BaremeFraisModel();
 
+    $gain= new GainOperateurModel();
 
+    $client= $clientModel->find($id);
 
-$clientModel=
-new ClientModel();
+    $f = $bareme->getFrais(2, $montant);
 
+    $frais = $f ? $f['frais'] : 0;
 
-$operation=
-new OperationModel();
+    if($client['solde'] < $montant+$frais)
+    {
+        return redirect()->back()->with('erreur','Solde insuffisant');
+    }
 
+    $clientModel->update($id,['solde'=> $client['solde']-$montant-$frais]);
 
-$bareme=
-new BaremeFraisModel();
+    $operation->insert(['id_type'=>2,'id_client_source'=>$id,'montant'=>$montant,'frais'=>$frais]);
 
+    $idOperation = $operation->getInsertID();
 
-$gain=
-new GainOperateurModel();
+    $gain->insert(['id_operation'=>$idOperation,'montant_frais'=>$frais]);
 
-
-
-$client=
-$clientModel->find($id);
-
-
-
-$f =
-$bareme->getFrais(
-2,
-$montant
-);
-
-
-
-$frais =
-$f ? $f['frais'] : 0;
-
-
-
-if($client['solde'] < $montant+$frais)
-{
-
-return redirect()
-->back()
-->with(
-'erreur',
-'Solde insuffisant'
-);
+    return redirect()->to('/client/dashboard');
 
 }
 
-
-
-$clientModel->update(
-
-$id,
-
-[
-'solde'=>
-$client['solde']
--$montant
--$frais
-]
-
-);
-
-
-
-$operation->insert([
-
-'id_type'=>2,
-
-'id_client_source'=>$id,
-
-'montant'=>$montant,
-
-'frais'=>$frais
-
-]);
-
-
-
-$idOperation =
-$operation->getInsertID();
-
-
-
-$gain->insert([
-
-'id_operation'=>$idOperation,
-
-'montant_frais'=>$frais
-
-]);
-
-
-
-return redirect()
-->to('/client/dashboard');
-
-
-}
-
-
-
-// =================
 // TRANSFERT
-// =================
-
 
 public function transfert()
 {
 
-return view(
-'client/transfert'
-);
+    return view('Client/transfert');
 
 }
-
 
 public function effectuerTransfert()
 {
@@ -463,37 +322,18 @@ public function effectuerTransfert()
 }
 
 
-
-// =================
 // HISTORIQUE
-// =================
-
 
 public function historique()
 {
+    $id=$this->idClient();
 
-$id=$this->idClient();
+    $model= new OperationModel();
 
+    $data['operations'] = $model->historiqueClient($id);
 
-$model=
-new OperationModel();
-
-
-
-$data['operations']
-=
-$model->historiqueClient($id);
-
-
-
-return view(
-'client/historique',
-$data
-);
-
+    return view('Client/historique', $data);
 
 }
-
-
 
 }

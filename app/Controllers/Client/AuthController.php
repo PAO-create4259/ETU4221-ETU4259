@@ -4,23 +4,15 @@ namespace App\Controllers\Client;
 
 
 use App\Controllers\BaseController;
-use App\Models\ClientModel;
-
+use App\Models\Client\ClientModel;
 
 class AuthController extends BaseController
 {
-
-
-    // Afficher la page login
-
+    // login
     public function index()
     {
-        return view('client/login');
+        return view('Client/login');
     }
-
-
-
-    // Vérifier le numéro
 
     public function login()
     {
@@ -33,8 +25,6 @@ class AuthController extends BaseController
 
         $client = $model->getClientByNumero($numero);
 
-
-
         if($client)
         {
 
@@ -46,30 +36,21 @@ class AuthController extends BaseController
             ]);
 
 
-             return view('client/dashboard',['client'=>$client]
-        );
-
+             return view('Client/dashboard',['client'=>$client]);
 
         }
 
-
-        return redirect()
-            ->back()
-            ->with(
-                'erreur',
-                'Numéro de téléphone inconnu'
-            );
+        return redirect()->back()->with( 'erreur', 'Numéro de téléphone inconnu');
 
     }
+
      public function logout()
     {
 
         session()->destroy();
 
-        return redirect()
-        ->to(
-        '/client/login'
-        );}
+        return redirect()->to('/client/login');
 
+    }
 
 }

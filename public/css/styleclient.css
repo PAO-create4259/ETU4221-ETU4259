@@ -393,3 +393,92 @@ body{
   .mm-filter-form{ flex-direction:column; align-items:stretch; }
   .mm-filter-form input, .mm-filter-form select{ min-width:100%; }
 }
+
+/* =========================================================
+   CLIENT
+========================================================= */
+
+.mm-page{
+  min-height:100vh;
+  background:var(--mm-bg);
+  padding-bottom:40px;
+}
+
+.mm-login{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#f7f9fc,#eef3f8);
+}
+
+.mm-login-card{
+  width:100%;
+  max-width:430px;
+  background:#fff;
+  padding:35px;
+  border-radius:20px;
+  box-shadow:0 10px 35px rgba(0,0,0,.08);
+}
+
+.mm-login-title{
+  text-align:center;
+  font-weight:700;
+  margin-bottom:25px;
+  color:var(--mm-secondary);
+}
+
+.mm-balance-card{
+  background:linear-gradient(135deg,var(--mm-secondary),#145c42);
+  color:white;
+  border-radius:20px;
+  padding:30px;
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.mm-balance-card h2{
+  font-size:2.5rem;
+  font-weight:700;
+  margin-top:10px;
+}
+
+.mm-action-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
+}
+
+.mm-action-card{
+  background:white;
+  border-radius:18px;
+  padding:25px;
+  text-align:center;
+  text-decoration:none;
+  color:#1f2937;
+  transition:.2s;
+  box-shadow:0 5px 18px rgba(0,0,0,.06);
+}
+
+.mm-action-card:hover{
+  transform:translateY(-4px);
+  color:inherit;
+}
+
+.mm-action-card i{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:var(--mm-primary);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:auto;
+  margin-bottom:15px;
+  font-size:1.4rem;
+}
+
+.mm-action-card h5{
+  font-weight:600;
+}
