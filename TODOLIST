@@ -1,0 +1,144 @@
+J ai un projet qui utilise ses technologies:
+Langage
+Php avec Codeigniter 4
+SQLite embarqué
+Html , Css , JS
+Bootstrap ou équivalent
+
+Le Thème est 
+Ce sera un système qui va simuler un opérateur de mobile money
+
+Version 1
+Coté opérateur
+Configuration des préfixes valable de l’opérateur (ex: 033 et 037)
+Création de types d'opérations (dépôt, retrait, transfert) avec des barèmes de frais par tranche de montant (modifiable ) . voici 1 exemple
+
+Situation gain via les différents frais ( retrait et transfert)
+Situation des comptes clients 
+
+Donne moi les controllers ,les vues et les modeles ainsi les routes.php,Database.php et base.sql si je veux faire bien ce projet et voici ma base.sql
+CREATE DATABASE IF NOT EXISTS   ETU4221-ETU4259;
+USE ETU4221-ETU4259; avec le code entier,pas un fichier zip mais tu affiches ici par fichier
+
+
+CREATE TABLE operateur (
+    id_operateur INTEGER PRIMARY KEY AUTOINCREMENT,
+    nom_operateur TEXT NOT NULL
+);
+
+CREATE TABLE prefixe (
+    id_prefixe INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_operateur INTEGER NOT NULL,
+    prefixe INTEGER NOT NULL,
+    FOREIGN KEY(id_operateur) REFERENCES operateur(id_operateur)
+);
+
+CREATE TABLE client (
+    id_client INTEGER PRIMARY KEY AUTOINCREMENT,
+    numero TEXT UNIQUE NOT NULL,
+    nom TEXT
+);
+CREATE TABLE type_operation (
+    id_type INTEGER PRIMARY KEY AUTOINCREMENT,
+    nom TEXT NOT NULL
+);
+CREATE TABLE bareme_frais (
+    id_bareme INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_type INTEGER NOT NULL,
+    montant_min REAL,
+    montant_max REAL,
+    frais REAL,
+    FOREIGN KEY(id_type) REFERENCES type_operation(id_type)
+);
+CREATE TABLE operation (
+    id_operation INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_type INTEGER NOT NULL,
+    id_client_source INTEGER NOT NULL,
+    id_client_destination INTEGER,
+    montant REAL NOT NULL,
+    frais REAL DEFAULT 0,
+    date_operation DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(id_type) REFERENCES type_operation(id_type),
+    FOREIGN KEY(id_client_source) REFERENCES client(id_client),
+    FOREIGN KEY(id_client_destination) REFERENCES client(id_client)
+);
+CREATE TABLE gain_operateur (
+    id_gain INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_operation INTEGER,
+    montant_frais REAL,
+    FOREIGN KEY(id_operation) REFERENCES operation(id_operation)
+);
+
+arborescence:
+app/
+│
+├── Controllers/
+│      Dashboard.php
+│      OperateurController.php
+│      PrefixeController.php
+│      ClientController.php
+│      TypeOperationController.php
+│      BaremeController.php
+│      OperationController.php
+│      RapportController.php
+│
+├── Models/
+│      OperateurModel.php
+│      PrefixeModel.php
+│      ClientModel.php
+│      TypeOperationModel.php
+│      BaremeModel.php
+│      OperationModel.php
+│      GainOperateurModel.php
+│
+├── Views/
+│
+│── layouts/
+│      header.php
+│      navbar.php
+│      footer.php
+│
+│── dashboard/
+│      index.php
+│
+│── operateur/
+│      liste.php
+│      ajout.php
+│      modifier.php
+│
+│── prefixe/
+│      liste.php
+│      ajout.php
+│      modifier.php
+│
+│── client/
+│      liste.php
+│      detail.php
+│
+│── type_operation/
+│      liste.php
+│      ajout.php
+│
+│── bareme/
+│      liste.php
+│      ajout.php
+│      modifier.php
+│
+│── operation/
+│      depot.php
+│      retrait.php
+│      transfert.php
+│      historique.php
+│
+│── rapport/
+│      gains.php
+│      comptes.php
+
+
+-View:gain.php
+    -routes.php:
+        $routes->get('rapport/gains', 'RapportController::gains');
+    -RapportController.php:
+        -fonction total des gains
+        -total des gains par type
+        -filtre
