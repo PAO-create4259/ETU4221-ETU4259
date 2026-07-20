@@ -105,4 +105,3 @@ INSERT INTO bareme_frais (id_type, montant_min, montant_max, frais) VALUES (3, 0
 INSERT INTO bareme_frais (id_type, montant_min, montant_max, frais) VALUES (3, 5001, 20000, 200);
 INSERT INTO bareme_frais (id_type, montant_min, montant_max, frais) VALUES (3, 20001, 100000, 500);
 
--- Depot = generalement gratuit, pas de bareme (frais = 0)
