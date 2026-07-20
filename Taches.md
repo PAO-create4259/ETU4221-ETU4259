@@ -40,7 +40,7 @@
 
             -app/Models/Operateur/ClientModel.php:
             -app/Models/OperationModel.php: qui recupere les infos client de la table operation
-            -app/Config/Routes.php
+            -mis a jour app/Config/Routes.php
 
         
 
