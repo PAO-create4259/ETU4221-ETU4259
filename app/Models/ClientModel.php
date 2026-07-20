@@ -16,4 +16,11 @@ class ClientModel extends Model
         'solde',
         'id_operateur'
     ];
+
+    public function getClientByNumero($numero)
+    {
+        return $this
+            ->where('numero',$numero)
+            ->first();
+    }
 }
