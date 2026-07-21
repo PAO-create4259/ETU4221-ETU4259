@@ -13,6 +13,8 @@ $routes->get('/clients','ClientController::index');
 
 $routes->get('/client/(:num)','ClientController::detail/$1');
 
+$routes->post('/client/epargne','Client\EpargneController::inserer');
+
 //login
 $routes->get('/client/login', 'Client\AuthController::index');
 
@@ -91,3 +93,4 @@ $routes->post('operateur/configuration-prefixe/modifier/(:num)','Operateur\Confi
 $routes->get('operateur/configuration-prefixe/supprimer/(:num)','Operateur\ConfigurationPrefixeController::supprimer/$1');
 
 $routes->get('operateur/situation','Operateur\SituationOperateurController::index');
+
