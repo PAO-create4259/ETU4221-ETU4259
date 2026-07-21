@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Models\Client;
+
+use CodeIgniter\Model;
+
+
+class PromotionModel extends Model
+{
+    protected $table='bareme_frais';
+
+    protected $primaryKey='id_bareme';
+
+    protected $allowedFields=['id_type','montant_min','montant_max','frais'];
+
+    public function getPromotion($type,$montant,$promotion)
+    {
+
+        return $this->where('id_type',$type)->where('montant_min <=',$montant)->where('montant_max >=',$montant) ->where('promotion', $promotion)->first();
+
+    }
+
+}

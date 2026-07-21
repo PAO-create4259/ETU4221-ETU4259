@@ -89,6 +89,24 @@ Déconnexion
 
 </div>
 
+<form method="post" action="/client/epargne">
+    <h2>
+    Definir mon pourcentage d' epargne
+    </h2>
+        <label>
+        Montant
+        </label>
+        <input type="number"
+        name="epargne"
+        class="form-control"
+        required>
+        <button class="btn btn-success">
+
+        Valider l epargne
+
+        </button>
+        </form>
+
 </body>
 
 </html>

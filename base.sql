@@ -53,6 +53,13 @@ CREATE TABLE bareme_frais (
     FOREIGN KEY(id_type) REFERENCES type_operation(id_type) ON DELETE CASCADE
 );
 
+/*Promotion*/
+ALTER TABLE bareme_frais 
+ADD COLUMN promotion REAL DEFAULT 0;
+
+INSERT INTO bareme_frais (promotion) VALUES ('-3%');
+
+
 -- =========================
 -- Table: operation
 -- =========================
