@@ -865,6 +865,7 @@ body{
 .action-buttons .btn-mm{
     display: flex;
 }
+<<<<<<< HEAD
 .mm-footer {
     margin-top: 40px;
     padding: 20px;
@@ -886,5 +887,7 @@ body{
     margin: 0;
     font-size: 14px;
 }
+=======
+>>>>>>> 6b96b14cfa8961a21908d87494fa0206d9c32273
 
 }
