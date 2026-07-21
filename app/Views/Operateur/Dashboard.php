@@ -27,6 +27,7 @@
     <a href="/operateur/dashboard" class="active"><i class="bi bi-speedometer2"></i> Dashboard</a>
     <a href="/clients"><i class="bi bi-people-fill"></i> Clients</a>
   </nav>
+  <?= view('Operateur/layout/navbar') ?>
 </div>
 <nav class="mm-nav">
 <a href="<?= base_url('/') ?>" class="mm-choice-btn btn-operateur">
@@ -63,25 +64,57 @@
     </form>
   </div>
 
-  <!-- Cartes de statistiques -->
-  <div class="mm-stats-row">
+</div>
 
-    <div class="mm-stat-card is-total">
-      <div class="mm-stat-label"><i class="bi bi-cash-stack"></i> Gains totaux</div>
-      <div class="mm-stat-value"><?= number_format($total_general, 0, ',', ' ') ?> <span class="badge-devise">Ar</span></div>
-    </div>
+<div class="mm-stats-row">
 
-    <div class="mm-stat-card is-retrait">
-      <div class="mm-stat-label"><i class="bi bi-box-arrow-down"></i> Gains Retrait</div>
-      <div class="mm-stat-value"><?= number_format($total_retrait, 0, ',', ' ') ?> <span class="badge-devise">Ar</span></div>
-    </div>
 
-    <div class="mm-stat-card is-transfert">
-      <div class="mm-stat-label"><i class="bi bi-arrow-left-right"></i> Gains Transfert</div>
-      <div class="mm-stat-value"><?= number_format($total_transfert, 0, ',', ' ') ?> <span class="badge-devise">Ar</span></div>
-    </div>
+<div class="mm-stat-card is-total">
 
-  </div>
+<div class="mm-stat-label">
+Gain interne
+</div>
+
+<div class="mm-stat-value">
+
+<?= $gain_interne ?> Ar
+
+</div>
+
+</div>
+
+
+
+<div class="mm-stat-card is-transfert">
+
+<div class="mm-stat-label">
+Commission inter opérateur
+</div>
+
+<div class="mm-stat-value">
+
+<?= $gain_inter_operateur ?> Ar
+
+</div>
+
+</div>
+
+
+
+<div class="mm-stat-card">
+
+<div class="mm-stat-label">
+Total gain
+</div>
+
+<div class="mm-stat-value">
+
+<?= $total_general ?> Ar
+
+</div>
+
+</div>
+
 
 </div>
 

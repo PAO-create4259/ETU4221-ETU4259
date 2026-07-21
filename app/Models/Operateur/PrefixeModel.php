@@ -21,4 +21,24 @@ class PrefixeModel extends Model
         ->findAll();
     }
 
+    public function ajouter($data)
+    {
+        return $this->insert($data);
+    }
+
+    public function modifier($id, $data)
+    {
+        return $this->update($id, $data);
+    }
+
+    public function supprimer($id)
+    {
+        return $this->delete($id);
+    }
+
+    public function getById($id)
+    {
+        return $this->find($id);
+    }
+
 }

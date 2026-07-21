@@ -593,3 +593,298 @@ body{
   color:var(--mm-primary-dark);
 }
 .mm-choice-btn.btn-client .mm-choice-icon{ background:var(--mm-primary); }
+
+/* =============================== */
+/* CONFIGURATION PREFIXES */
+/* =============================== */
+
+.mm-card{
+
+    margin-bottom:25px;
+
+}
+
+.mm-card h4{
+
+    color:var(--mm-secondary);
+
+    font-weight:700;
+
+}
+
+.mm-table input{
+
+    border-radius:10px;
+
+}
+
+.mm-table select{
+
+    border-radius:10px;
+
+}
+
+.mm-table td{
+
+    vertical-align:middle;
+
+}
+
+.mm-table .btn-danger{
+
+    border-radius:30px;
+
+    margin-left:8px;
+
+}
+
+.alert-success{
+
+    border-radius:12px;
+
+}
+
+/* =========================================================
+   PAGES CONFIGURATION OPERATEUR
+   Prefixes / Commissions / Situation
+   ========================================================= */
+
+
+/* Conteneur général opérateur */
+.mm-container{
+    max-width:1200px;
+    margin:auto;
+    padding:30px 20px;
+}
+
+
+/* Titre des sections */
+.mm-section-title{
+    font-size:1.2rem;
+    font-weight:700;
+    color:var(--mm-secondary);
+    margin-bottom:20px;
+}
+
+
+/* Formulaire configuration */
+.mm-form-row{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    align-items:center;
+}
+
+
+.mm-form-row .form-control,
+.mm-form-row .form-select{
+
+    border-radius:12px;
+    border:1px solid #e2e5eb;
+    padding:10px 14px;
+}
+
+
+.mm-form-row .form-control:focus,
+.mm-form-row .form-select:focus{
+
+    border-color:var(--mm-primary);
+    box-shadow:0 0 0 3px rgba(255,102,0,.12);
+}
+
+
+/* Boutons action */
+.btn-mm-danger{
+
+    background:#E11D48;
+    color:white;
+    border:none;
+    padding:9px 18px;
+    border-radius:50px;
+    font-weight:600;
+    text-decoration:none;
+    transition:.2s;
+
+}
+
+
+.btn-mm-danger:hover{
+
+    background:#be123c;
+    color:white;
+
+}
+
+
+
+.btn-mm-success{
+
+    background:#00A651;
+    color:white;
+    border:none;
+    padding:9px 18px;
+    border-radius:50px;
+    font-weight:600;
+    text-decoration:none;
+
+}
+
+
+.btn-mm-success:hover{
+
+    background:#008f45;
+    color:white;
+
+}
+
+
+/* Tableau configuration */
+
+.mm-config-table{
+
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0;
+}
+
+
+.mm-config-table thead th{
+
+    background:var(--mm-secondary);
+    color:white;
+    padding:14px;
+    text-transform:uppercase;
+    font-size:.78rem;
+    letter-spacing:.05em;
+
+}
+
+
+.mm-config-table tbody td{
+
+    padding:14px;
+    background:white;
+    border-bottom:1px solid #eef0f3;
+    vertical-align:middle;
+
+}
+
+
+.mm-config-table tbody tr:hover td{
+
+    background:#fff8f2;
+
+}
+
+
+/* Badge opérateur */
+
+.mm-operator-badge{
+
+    background:#f4f6f9;
+    color:var(--mm-secondary);
+    padding:6px 14px;
+    border-radius:50px;
+    font-weight:600;
+    font-size:.85rem;
+
+}
+
+
+
+/* Pourcentage commission */
+
+.mm-percentage{
+
+    font-size:1.4rem;
+    font-weight:700;
+    color:var(--mm-primary);
+
+}
+
+
+
+/* Situation opérateur */
+
+.mm-money{
+
+    font-size:1.3rem;
+    font-weight:700;
+    color:var(--mm-secondary);
+
+}
+
+
+.mm-date{
+
+    color:#6b7280;
+    font-size:.9rem;
+
+}
+
+
+
+/* Message vide */
+
+.mm-empty{
+
+    text-align:center;
+    padding:40px;
+    color:#9aa1ab;
+    font-size:.95rem;
+
+}
+
+
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .mm-form-row{
+
+        flex-direction:column;
+        align-items:stretch;
+
+    }
+
+
+    .mm-config-table{
+
+        display:block;
+        overflow-x:auto;
+
+    }
+    .action-buttons{
+    display: flex;
+    gap: 10px;      /* espace entre les boutons */
+    align-items: center;
+}
+
+.action-buttons .btn,
+.action-buttons .btn-mm{
+    display: flex;
+}
+.mm-footer {
+    margin-top: 40px;
+    padding: 20px;
+    background: #0a3d00;
+    color: #fff;
+    text-align: center;
+    border-top: 4px solid #ff7139;
+}
+
+.footer-content {
+    
+    flex-direction: column;   /* Les textes sont l'un sous l'autre */
+    align-items: center;      /* Centre horizontalement */
+    justify-content: center;  /* Centre verticalement */
+    gap: 5px;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 14px;
+}
+
+}

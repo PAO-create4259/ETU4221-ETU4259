@@ -11,10 +11,21 @@
 href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
 rel="stylesheet">
 
-<link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
+<link rel="stylesheet" href="<?= base_url('css/styleclient.css') ?>">
 
 </head>
+<div class="mm-topbar">
 
+    <div>
+        <h2>Administration Opérateur</h2>
+        <div class="subtitle">
+            Gestion Mobile Money
+        </div>
+    </div>
+
+
+     <?= view('Operateur/layout/navbar') ?>
+</div>
 <body>
 
 <div class="container mt-4">
@@ -49,7 +60,7 @@ Transfert entre opérateurs
 
 <?php endif; ?>
 
-    <table class="table mm-table">
+    <table class="mm-config-table">
         <thead>
         <tr>
         <th>Source</th>
@@ -60,38 +71,39 @@ Transfert entre opérateurs
         </thead>
 
         <tbody>
-        <?php foreach($commissions as $commission): ?>
-        <tr>
-        <form
-        method="post"
-        action="<?= site_url('operateur/commission/update/'.$commission['id_commission']) ?>">
-        <td>
-        <?= esc($commission['source']) ?>
-        </td>
-        <td>
-        <?= esc($commission['destination']) ?>
-        </td>
-        <td width="180">
-        <input
-        type="number"
-        step="0.01"
-        name="pourcentage"
-        value="<?= $commission['pourcentage'] ?>"
-        class="form-control">
-        </td>
-        <td>
-        <button
-        class="btn-mm">
+       <?php foreach($commissions as $commission): ?>
 
-        Enregistrer
+            <tr>
 
-        </button>
+            <form method="post"
+            action="<?= site_url('operateur/commission/update/'.$commission['id_commission']) ?>">
 
-        </td>
+            <td><?= esc($commission['source']) ?></td>
 
-        </form>
+            <td><?= esc($commission['destination']) ?></td>
 
-        </tr>
+            <td>
+
+            <input
+            type="number"
+            step="0.01"
+            name="pourcentage"
+            value="<?= $commission['pourcentage'] ?>"
+            class="form-control">
+
+            </td>
+
+            <td>
+
+            <button class="btn-mm">
+            Enregistrer
+            </button>
+
+            </td>
+
+            </form>
+
+            </tr>
 
         <?php endforeach; ?>
 
