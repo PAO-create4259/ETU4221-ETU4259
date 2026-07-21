@@ -19,11 +19,15 @@ class Operateur extends BaseController
 
         $data = [
 
-            'total_general' => $gainModel->getTotalGain($dateDebut,$dateFin),
+            'gain_interne' =>
+                $gainModel->getGainInterne(),
 
-            'total_retrait' => $gainModel->getGainParType('Retrait', $dateDebut, $dateFin),
+            'gain_inter_operateur' =>
+                $gainModel->getGainInterOperateur(),
 
-            'total_transfert' => $gainModel->getGainParType( 'Transfert', $dateDebut, $dateFin),
+            'total_general' =>
+                $gainModel->getTotalGain()
+
         ];
         return view( 'Operateur/Dashboard', $data);
 

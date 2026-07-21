@@ -77,3 +77,17 @@ $routes->get('/operateur/configuration-prefixe','Operateur\ConfigurationPrefixeC
 $routes->get('operateur/commission', 'Operateur\CommissionController::index');
 
 $routes->post('operateur/commission/update/(:num)', 'Operateur\CommissionController::update/$1');
+
+
+// CONFIGURATION PREFIXE
+
+
+$routes->post('operateur/configuration-prefixe/ajouter','Operateur\ConfigurationPrefixeController::ajouter');
+
+
+$routes->post('operateur/configuration-prefixe/modifier/(:num)','Operateur\ConfigurationPrefixeController::modifier/$1');
+
+
+$routes->get('operateur/configuration-prefixe/supprimer/(:num)','Operateur\ConfigurationPrefixeController::supprimer/$1');
+
+$routes->get('operateur/situation','Operateur\SituationOperateurController::index');

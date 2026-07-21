@@ -188,3 +188,10 @@ INSERT INTO commission_interoperateur
 (id_operateur_source,id_operateur_destination,pourcentage)
 VALUES
 (2,1,2);
+
+/*vaovao*/
+ALTER TABLE operation
+ADD COLUMN commission_inter REAL DEFAULT 0;
+
+ALTER TABLE operation
+ADD COLUMN inter_operateur INTEGER DEFAULT 0;
