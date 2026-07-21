@@ -53,13 +53,6 @@ CREATE TABLE bareme_frais (
     FOREIGN KEY(id_type) REFERENCES type_operation(id_type) ON DELETE CASCADE
 );
 
-/*Promotion*/
-ALTER TABLE bareme_frais 
-ADD COLUMN promotion REAL DEFAULT 0;
-
-INSERT INTO bareme_frais (promotion) VALUES ('-3%');
-
-
 -- =========================
 -- Table: operation
 -- =========================
@@ -202,3 +195,13 @@ ADD COLUMN commission_inter REAL DEFAULT 0;
 
 ALTER TABLE operation
 ADD COLUMN inter_operateur INTEGER DEFAULT 0;
+
+CREATE TABLE epargne(
+     id_epargne INTEGER PRIMARY KEY AUTOINCREMENT,
+     id_client INTEGER,
+     pourcentage INTEGER,
+
+    FOREIGN KEY(id_client)
+        REFERENCES client(id_client)
+);
+insert into epargne (id_client,pourcentage) values (1,10);
